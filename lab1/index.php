@@ -8,11 +8,11 @@
     </head>
     <body>
         <h1>A Heading</h1>
-        <ol>
+        <ul>
             <li>things</li>
             <li>things</li>
             <li>things</li>
-        </ol>
+        </ul>
         <table>
             <tr>
                 <td>things</td>
@@ -27,9 +27,9 @@
         </table>
         <img src="https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png"/>
         <address>
-    		<ul class="list-style">
-    			<li><span class ="bold">Email: </span><a href="mailto:s5014219@griffithuni.com">s5014219@griffithuni.com</a></li>
-    			<li><span class ="bold">Phone: </span>(07) 123456789</li>
+    		<ul>
+    			<li>Email: <a href="mailto:s5014219@griffithuni.com">s5014219@griffithuni.com</a></li>
+    			<li>Phone: (07) 123456789</li>
     		</ul>
 		</address>
 		<a href="page2.html">PAGE2</a>
