@@ -1,9 +1,17 @@
 <?php
     $num = rand(1, 10);
-    $posts = array();
-    for($i = 0; $i < $num; $i++){
-        $posts[] = array('date' => '6/6/6', 'message' => "post$i", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png');
-    }
+    $posts = array(
+        array('date' => '10/6/6', 'message' => "post 1", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '1/6/6', 'message' => "post 2", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '2/6/6', 'message' => "post 3", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '3/6/6', 'message' => "post 4", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '4/6/6', 'message' => "post 5", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '5/6/6', 'message' => "post 6", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '6/6/6', 'message' => "post 7", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '7/6/6', 'message' => "post 8", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '8/6/6', 'message' => "post 9", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+        array('date' => '9/6/6', 'message' => "post 10", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png'),
+    );
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +82,7 @@
               <?php 
                 echo "<br>$num<br>";
                 
-                for($i = 0; $i < count($posts); $i++){
+                for($i = 0; $i < $num; $i++){
                   $image = $posts[$i]['image'];
                   $date = $posts[$i]['date'];
                   $message = $posts[$i]['message'];
