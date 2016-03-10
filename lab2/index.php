@@ -22,6 +22,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png">
 
     <title>Social Netwrok</title>
 
