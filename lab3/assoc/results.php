@@ -7,12 +7,10 @@
 include "includes/defs.php";
 
 /* Get form data. */
-$name = $_GET['name'];
-$year = $_GET['year'];
-$state = $_GET['state'];
+$search = $_GET['search'];
 
 /* Get array of pms that match query in form data. */
-$pms = search($name, $year, $state);
+$pms = search($search);
 ?>
 
 <!-- display results -->
