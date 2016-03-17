@@ -25,6 +25,7 @@ if (empty($number)) {
     # Set $factors to a single dot-separated string of numbers in the array.
     $factors = join(" . ", $factors);
     $previous = "$number = $factors <br>";
+    //appened previous factoisations to a text file
     file_put_contents("factors.txt", $previous, FILE_APPEND);
 }
 ?>
@@ -41,7 +42,8 @@ if (empty($number)) {
     
    <?php if(empty($error)){ ?>
       <p><?php echo "$number = $factors"; ?></p>
-      <p><?php  echo file_get_contents('./factors.txt', true); ?></p>
+      <!--Lists previous Factorisations -->
+      <p><?php  echo file_get_contents('./factors.txt', true); ?></p> 
     <?php }else { ?>
       <p class = "alert"><?= $error ?></p>
     <?php } ?>
