@@ -9,6 +9,7 @@ include "includes/defs.php";
 # Set $number to the value entered in the form.
 $number = $_GET['number'];
 
+$error = '';
 # Check $number is nonempty, numeric and between 2 and PHP_MAX_INT = 2^31-1.
 # (PHP makes it difficult to do this naturally; see the manual.)
 if (empty($number)) {
@@ -34,10 +35,21 @@ if (empty($number)) {
   
   <body>  
     <h1>Factorisation</h1>
+    
+   <?php if(empty($error)){ ?>
+      <p><?php echo "$number = $factors"; ?></p>
+    <?php }else { ?>
+      <p class = "alert"><?= $error ?></p>
+    <?php } ?>
 
-    <p><?php echo "$number = $factors"; ?></p>
+    <h2>Another factorisation</h2>
 
-    <p><a href="index.html">Another?</a></p>
+    <form method="get" action="factorise.php">
+      <p>Number to factorise: 
+         <input type="text" name="number" value="<?= $number ?>">
+      <p><input type="submit" value="Factorise it!">
+    </form>
+
     <hr>
     <p>
     Sources:
