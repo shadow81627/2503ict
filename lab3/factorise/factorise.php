@@ -9,6 +9,7 @@ include "includes/defs.php";
 # Set $number to the value entered in the form.
 $number = $_GET['number'];
 
+$previous = array();
 $error = '';
 # Check $number is nonempty, numeric and between 2 and PHP_MAX_INT = 2^31-1.
 # (PHP makes it difficult to do this naturally; see the manual.)
@@ -23,6 +24,8 @@ if (empty($number)) {
     $factors = factors($number);
     # Set $factors to a single dot-separated string of numbers in the array.
     $factors = join(" . ", $factors);
+    $previous = "$number = $factors <br>";
+    file_put_contents("factors.txt", $previous, FILE_APPEND);
 }
 ?>
 <!DOCTYPE html>
@@ -38,6 +41,7 @@ if (empty($number)) {
     
    <?php if(empty($error)){ ?>
       <p><?php echo "$number = $factors"; ?></p>
+      <p><?php  echo file_get_contents('./factors.txt', true); ?></p>
     <?php }else { ?>
       <p class = "alert"><?= $error ?></p>
     <?php } ?>
