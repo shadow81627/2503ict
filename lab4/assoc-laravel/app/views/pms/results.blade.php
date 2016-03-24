@@ -6,8 +6,8 @@ Associative array search results page
 
 @section('content')
 
-<h2>Australian Prime Ministers</h2>
-<h3>Results</h3>
+<h2>Australian Libaray Users</h2>
+<h3>Results for {{ $search = Input::get('search'); }}</h3>
 
 @if (count($pms) == 0)
 
@@ -17,12 +17,12 @@ Associative array search results page
 
 <table class="bordered">
 <thead>
-<tr><th>No.</th><th>Name</th><th>From</th><th>To</th><th>Duration</th><th>Party</th><th>State</th></tr>
+<tr><th>Name</th><th>Address</th><th>Phone</th><th>Email</th></tr>
 </thead>
 <tbody>
 
 @foreach($pms as $pm)
-  <tr><td>{{{ $pm['index'] }}}</td><td>{{{ $pm['name'] }}}</td><td>{{{ $pm['from'] }}}</td><td>{{{ $pm['to'] }}}</td><td>{{{ $pm['duration'] }}}</td><td>{{{ $pm['party'] }}}</td><td>{{{ $pm['state'] }}}</td></tr>
+  <tr></tr><td>{{{ $pm['name'] }}}</td><td>{{{ $pm['address'] }}}</td><td>{{{ $pm['phone'] }}}</td><td>{{{ $pm['email'] }}}</td></tr>
 @endforeach
 
 </tbody>

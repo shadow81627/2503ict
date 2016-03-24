@@ -24,11 +24,9 @@ Route::get('/', function()
 // Perform search and display results
 Route::get('search', function()
 {
-  $name = Input::get('name');
-  $year = Input::get('year');
-  $state = Input::get('state');
+  $search = Input::get('search');
 
-  $results = search($name, $year, $state);
+  $results = search($search);
 
 	return View::make('pms.results')->withPms($results);
 });
@@ -38,7 +36,7 @@ Route::get('search', function()
 
 /* Search sample data for $name or $year or $state from form. */
 function search($search) {
-    global $pms; 
+    $pms = getPms(); 
 	
 	if(!empty($search)){
 		$words = explode ( " " , $search);
