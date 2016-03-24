@@ -12,13 +12,13 @@
 */
 
 /* Load sample data, an array of associative arrays. */
-require "models/pms.php";
+require "models/Users.php";
 
 
 // Display search form
 Route::get('/', function()
 {
-	return View::make('pms.query');
+	return View::make('users.query');
 });
 
 // Perform search and display results
@@ -28,32 +28,32 @@ Route::get('search', function()
 
   $results = search($search);
 
-	return View::make('pms.results')->withPms($results);
+	return View::make('users.results')->withUsers($results);
 });
 
 
-/* Functions for PM database example. */
+/* Functions for user database example. */
 
 /* Search sample data for $name or $year or $state from form. */
 function search($search) {
-    $pms = getPms(); 
+    $users = getUsers(); 
 	
 	if(!empty($search)){
 		$words = explode ( " " , $search);
 		foreach($words as $word){
-			 // Filter $pms by $search
+			 // Filter $users by $search
 			$results = array();
-			foreach ($pms as $pm) {
-			    if (stripos($pm['name'], $word) !== FALSE ||
-			    	strpos($pm['address'], $word) !== FALSE || 
-			        strpos($pm['phone'], $word) !== FALSE ||
-			        stripos($pm['email'], $word) !== FALSE){
-			        $results[] = $pm;
+			foreach ($users as $user) {
+			    if (stripos($user['name'], $word) !== FALSE ||
+			    	strpos($user['address'], $word) !== FALSE || 
+			        strpos($user['phone'], $word) !== FALSE ||
+			        stripos($user['email'], $word) !== FALSE){
+			        $results[] = $user;
 				}
 			}
 		}
-		$pms = $results;
-		return $pms;
+		$users = $results;
+		return $users;
 	}
 }
 ?>
