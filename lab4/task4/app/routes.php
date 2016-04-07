@@ -15,3 +15,9 @@ Route::get('/', function()
 {
 	return View::make('social.home');
 });
+
+Route::get('/page2', function()
+{
+	return View::make('social.page2');
+});
+

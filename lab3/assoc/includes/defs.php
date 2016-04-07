@@ -23,7 +23,8 @@ function search($search) {
 			}
 		}
 		$pms = $results;
+		return $pms;
 	}
-	return $pms;
+	
 }
 ?>

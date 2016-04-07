@@ -57,18 +57,14 @@
       <div class="row">
           <div class="col-xs-4"> 
               @section('post')
-              <form>
-                  Name: <br>
-                  <input type="text" name="name"> <br>
-                  <textarea rows="4" cols="10">Enter your post</textarea> <br>
-                  <button>Post</button>
-              </form>
+              
               @show
           </div>
           <div class="col-xs-8">
               @yield('content')
           </div>
       </div>
+
     </div> <!-- /container -->
   </body>
 </html>
