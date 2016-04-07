@@ -28,7 +28,7 @@ Route::get('search', function()
 
   $results = search($search);
 
-	return View::make('users.results')->withUsers($results);
+	return View::make('users.results')->withUsers($results)->withSearch($search);
 });
 
 
