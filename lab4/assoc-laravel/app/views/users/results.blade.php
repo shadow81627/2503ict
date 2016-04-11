@@ -7,7 +7,7 @@ Associative array search results page
 @section('content')
 
 <h2>Australian Libaray Users</h2>
-<h3>Results for {{ $search = Input::get('search'); }}</h3>
+<h3>Results for {{{ $search }}}</h3>
 
 @if (count($users) == 0)
 
