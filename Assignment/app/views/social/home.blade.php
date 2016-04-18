@@ -2,15 +2,19 @@
 
 @section('post')
 <form>
-  Name: <br>
-  <input type="text" name="name"> <br>
-  <textarea rows="4" cols="10">Enter your post</textarea> <br>
-  <button>Post</button>
+  <label for ="name">Name: </label><br>
+  <input type="text" name="name" placeholder="Enter your Name"> <br>
+  <label for="title">Title: </label><br>
+  <input type="text" name="title" placeholder="Enter your Title"> <br>
+  <label for="message">Message: </label><br>
+  <input type= "text" name="message" placeholder="Enter your post"></input><br>
+  <input type="submit" value="Post">
 </form>
 
 <div class ="post">
-      <img class="photo" src="https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png" alt="Griffith University Logo"> <br>
-      <p>stuff</p>
+  <h2>Title</h2>
+  <img class="photo" src="https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png" alt="Griffith University Logo"> <br>
+  <p>stuff</p>
   </div>
 @stop
 
