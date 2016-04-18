@@ -10,4 +10,4 @@ WHERE c.ADDRESS LIKE "%Nathan%";
 SELECT c.NAME FROM CUSTOMERS AS c
 WHERE c.ID IN(SELECT o.CUSTID FROM ORDERS AS o
     WHERE o.ITEMID IN(SELECT s.ID FROM STOCK AS s
-        WHERE s.NAME = "Fred's Fries"));
+        WHERE s.NAME = 'Fred''s Fries'));
