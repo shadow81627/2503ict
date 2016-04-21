@@ -14,9 +14,10 @@
 @stop
 
 @section('content')
+@if ($posts)
+@foreach ($posts as post)
+@endforeach
 <?php
-    //randomly generates a number between 1 and 10
-    $num = rand(1, 10);
     //the array containg all the of the data for the post
     $posts = array(
         array('title' => 'Title 1', 'message' => "post 1", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png', 'name' => 'Ben'),

@@ -62,13 +62,24 @@ Route::post('update_item_action', function()
 {
   $summary = Input::get('summary');
   $details = Input::get('details');
+  $id = Input::get('id');
 
-  $id = add_item($summary, $details);
+  $id = update_item($id, $summary, $details);
+  
+  if ($id) 
+  {
+    return Redirect::to(url("item_detail/$id"));
+  } 
+  else
+  {
+    die("Error updating item");
+  }
 });
 
 Route::get('delete_item_action/{id}', function($id)
 {
-  
+  delete_item($id);
+  return Redirect::to(url("item_list"));
 });
 
 
@@ -107,3 +118,16 @@ function add_item($summary, $details)
 
   return $id;
 }
+
+function update_item($id, $summary, $details) 
+{
+  $sql = "update item set summary = ?, details = ? where id = ?";
+  DB::update($sql, array($summary, $details, $id));
+  return $id;
+}
+
+function delete_item($id) 
+{
+  $sql = "delete from item where id = ?";
+  DB::delete($sql, array($id));
+} 

@@ -40,7 +40,7 @@ function search($search) {
 	if(!empty($search)){
 		$sql = "select * from pms where name like ? OR start like ? 
 		OR finish like ? OR state like ?";
-		$pms = DB:: select($sql, array("%$search%"));
+		$pms = DB:: select($sql, array("%$search%", "%$search%", "%$search%", "%$search%"));
 		/*$queries = DB::getQuearyLog();
 		print_r($queries);
 		print_r($pms);

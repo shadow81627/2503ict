@@ -22,8 +22,7 @@ Associative array search results page
 <tbody>
 
 @foreach($users as $user)
-   {{-- {{{print_r($pm)}}} --}}
-    
+
   <tr></tr><td>{{{ $user->number }}}</td><td>{{{ $user->name }}}</td><td>{{{ $user->start }}}</td><td>{{{ $user->finish }}}</td><td>{{{ $user->duration }}}</td><td>{{{ $user->party }}}</td><td>{{{ $user->state }}}</td></tr>
  
 @endforeach
