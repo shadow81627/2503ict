@@ -54,17 +54,21 @@ Route::post('add_item_action', function()
 
 Route::get('update_item/{id}', function($id)
 {
-
+  $item = get_item($id);
+	return View::make('items.update_item')->withItem($item);
 });
 
 Route::post('update_item_action', function()
 {
+  $summary = Input::get('summary');
+  $details = Input::get('details');
 
+  $id = add_item($summary, $details);
 });
 
 Route::get('delete_item_action/{id}', function($id)
 {
-
+  
 });
 
 
