@@ -13,11 +13,23 @@
 
 Route::get('/', function()
 {
-	return View::make('social.home');
+	$posts = get_posts();
+	return View::make('social.home')->withPosts($posts);
 });
 
 Route::get('/page2', function()
 {
-	return View::make('social.page2');
+	$posts = get_posts();
+	return View::make('social.page2')->withPosts($posts);
 });
 
+/*
+ * Gets all of the columns from the Posts table.
+ */
+function get_posts()
+{
+  $sql = "select * from POSTS";
+  $posts = DB::select($sql);
+  return $posts;
+  //print_r($posts);
+}

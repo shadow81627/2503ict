@@ -14,36 +14,22 @@
 @stop
 
 @section('content')
-<?php
-    //the array containg all the of the data for the post
-    $posts = array(
-        array('title' => 'Title 1', 'message' => "post 1", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png', 'name' => 'Ben'),
-        array('title' => 'Title 2', 'message' => "post 2", 'image' => 'https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png', 'name' => 'Tom'),
-    );
-?>
-@foreach($posts as $post)
-    <div class ="post">
-      <h2>{{$post['title']}}</h2>
-      <img class="photo" src="https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png" alt="Griffith University Logo">
-      <p>Message: {{$post['message']}}</p>
-      <p>submitted by: {{$post['name']}} </p>
-    </div>
-  @endforeach
-  
 @if ($posts)
 <ul>
 @foreach($posts as $post)
     <div class ="post">
-      <h2>{{$post->title}}</h2>
-      <img class="photo" src={{$post->icon}} alt={{$post->iconDescription}}>
-      <p>Message: {{$post->message}}</p>
-      <p>submitted by: {{$post->name}} </p>
+      <h2>{{{ $post->TITLE }}}</h2>
+      <img class="photo" src={{{ $post->ICON }}}>
+      <p>Message: {{{ $post->MESSAGE }}}</p>
+      <p>submitted by: {{{ $post->NAME }}} </p>
     </div>
 @endforeach
 </ul>
 @else
 <p>No items found.</p>
-@endif
+@endif 
+
+
   
 	<a href="page2">PAGE2</a>
 @stop
