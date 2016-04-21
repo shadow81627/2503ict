@@ -18,10 +18,11 @@ CREATE TABLE POSTS (
     MESSAGE VARCHAR(40),
     NAME VARCHAR(40)
 );
+
 /*
  * Create the comments table which stores the data of a commen including the ID 
  * of the post which the commen was made on, the message of the comment and the 
- * name of the poster. 
+ * name of the poster. Post_ID is a foreign key matched with ID in Posts.
  */
 CREATE TABLE COMMENTS(
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,4 +30,6 @@ CREATE TABLE COMMENTS(
     MESSAGE VARCHAR(40),
     NAME VARCHAR(40)
 );
+
+
 
