@@ -14,9 +14,6 @@
 @stop
 
 @section('content')
-@if ($posts)
-@foreach ($posts as post)
-@endforeach
 <?php
     //the array containg all the of the data for the post
     $posts = array(
@@ -32,6 +29,21 @@
       <p>submitted by: {{$post['name']}} </p>
     </div>
   @endforeach
+  
+@if ($posts)
+<ul>
+@foreach($posts as $post)
+    <div class ="post">
+      <h2>{{$post->title}}</h2>
+      <img class="photo" src={{$post->icon}} alt={{$post->iconDescription}}>
+      <p>Message: {{$post->message}}</p>
+      <p>submitted by: {{$post->name}} </p>
+    </div>
+@endforeach
+</ul>
+@else
+<p>No items found.</p>
+@endif
   
 	<a href="page2">PAGE2</a>
 @stop
