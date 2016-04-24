@@ -28,8 +28,9 @@ Route::get('/page2', function()
  */
 function get_posts()
 {
-  $sql = "select * from POSTS";
+  $sql = "select p.TITLE, p.ICON, p.MESSAGE, p.NAME, COUNT(c.POST_ID) AS NUNCOMMENTS, * from POSTS AS p, COMMENTS AS c WHERE c.POST_ID = p.ID";
   $posts = DB::select($sql);
   return $posts;
   //print_r($posts);
 }
+
