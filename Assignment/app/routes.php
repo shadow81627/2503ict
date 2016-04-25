@@ -112,6 +112,12 @@ Route::get('posts_delete_action/{id}', function($id)
   return Redirect::to(url("home"));
 });
 
+Route::get('comment_delete_action/{id}', function($id)
+{
+  $post = delete_comment($id);
+  return Redirect::to(url("posts_comments/$post->post_ID"));
+});
+
 /*
  * Gets all of the columns and counts the number of comments for each post from the Posts table.
  */
@@ -187,7 +193,7 @@ function update_item($id, $title, $name, $message)
 }
 
 /*
- * Deletes the item of given ID
+ * Deletes the post of given ID
  */
 function delete_post($id) 
 {
@@ -195,3 +201,26 @@ function delete_post($id)
   DB::delete($sql, array($id));
 } 
 
+/*
+ * Deletes the comment with the given ID and returns the post it was on
+ */
+function delete_comment($id) 
+{
+  $getPostSQL = "SELECT post_ID FROM comments WHERE comment_ID = ?";
+  $posts = DB::select($getPostSQL, array($id));
+  $sql = "delete from comments where comment_ID = ?";
+  DB::delete($sql, array($id));
+    //print_r($posts);
+    
+    // If we get more than one item or no items display an error
+	
+	if (count($posts) != 1) 
+	{
+    die("Invalid query or result: $query\n");
+  }
+
+	// Extract the first item (which should be the only item)
+  $post = $posts[0];
+     // print_r($post->post_ID);
+	return $post;
+} 
