@@ -18,11 +18,11 @@
 <ul>
 @foreach($posts as $post)
     <div class ="post">
-      <h2>{{{ $post->TITLE }}}</h2>
-      <img class="photo" src={{{ $post->ICON }}}>
-      <p>Message: {{{ $post->MESSAGE }}}</p>
-      <p>submitted by: {{{ $post->NAME }}} </p>
-      <a href="{{{ url("post_comments/$post->ID") }}}">Comments {{{ $post->NUNCOMMENTS }}}</a> | <a href="{{{ url("post_edit/$post->ID") }}}">Edit</a> | <a href="{{{ url("post_delete_action/$post->ID") }}}">Delete</a>
+      <h2>{{{ $post->title }}}</h2>
+      <img class="photo" src={{{ $post->icon }}}>
+      <p>Message: {{{ $post->message }}}</p>
+      <p>submitted by: {{{ $post->post_name }}} </p>
+      <a href="{{{ url("posts_comments/$post->post_ID") }}}">Comments {{{ $post->numComments }}}</a> | <a href="{{{ url("posts_edit/$post->post_ID") }}}">Edit</a> | <a href="{{{ url("posts_delete_action/$post->post_ID") }}}">Delete</a>
     </div>
 @endforeach
 </ul>

@@ -36,8 +36,12 @@ Route::post('add_item_action', function()
   $title = Input::get('title');
   $name = Input::get('name');
   $message = Input::get('message');
-
-  $id = add_item($title, $name, $message);
+  
+  if($title != NULL && $name != NULL && $message != NULL){
+     $id = add_item($title, $name, $message);
+  }else {
+     die("Ensure all fields are filled");
+  }
 
   // If successfully created then display newly created item
   if ($id) 
@@ -66,8 +70,8 @@ Route::get('delete_item_action/{id}', function($id)
  */
 function get_posts()
 {
-    $sql = "select COUNT(COMMENTS.ID) AS NUNCOMMENTS, * from POSTS LEFT OUTER JOIN COMMENTS ON POSTS.ID = COMMENTS.POST_ID
-    group by POSTS.ID order by POSTS.ID desc";
+    $sql = "SELECT COUNT(comments.comment_ID) AS numComments, * FROM posts LEFT JOIN comments ON posts.post_ID = comments.post_ID
+    group by posts.post_ID order by posts.post_ID desc";
     $posts = DB::select($sql);
     print_r($posts);
     return $posts;
@@ -78,23 +82,23 @@ function get_posts()
  */
 function get_post($id)
 {
-	$sql = "select p.ID, p.TITLE, p.ICON, p.MESSAGE, p.NAME, from POSTS AS p where id = ?";
-	$items = DB::select($sql, array($id));
+	$sql = "SELECT * FROM posts WHERE post_ID = ?";
+	$posts = DB::select($sql, array($id));
 
 	// If we get more than one item or no items display an error
-	if (count($items) != 1) 
+	if (count($posts) != 1) 
 	{
     die("Invalid query or result: $query\n");
   }
 
 	// Extract the first item (which should be the only item)
-  $item = $items[0];
-	return $item;
+  $post = $posts[0];
+	return $post;
 }
 
 function add_item($title, $name, $message) 
 {
-  $sql = "insert into POSTS (title, name, message) values (?, ?, ?)";
+  $sql = "insert into POSTS(TITLE, NAME, MESSAGE) values (?, ?, ?)";
 
   DB::insert($sql, array($title, $name, $message));
 
