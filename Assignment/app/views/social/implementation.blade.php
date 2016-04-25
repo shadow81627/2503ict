@@ -24,5 +24,5 @@ Deleting a comment redirects to the view comments page.
 @stop
 
 @section('content')
-<img src="https://bytebucket.org/s5014219/2503ict/raw/eab62fc77d7dccdfe3f66244599ad8610833af0c/Assignment/app/database/2503ict%20Social%20Network%20Database.png?token=3605f575508f4dd95302f8a5766a6309dcd9167d">
+
 @stop
