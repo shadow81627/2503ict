@@ -16,6 +16,12 @@ Route::get('/', function()
   return Redirect::to(url("home"));
 });
 
+Route::get('implemention', function()
+{
+	return View::make('social.implementation');
+});
+
+
 Route::get('home', function()
 {
 	$posts = get_posts();
