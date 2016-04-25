@@ -1,11 +1,10 @@
 I used lab4 task4 to create the navigation bar, create post and display post 
 with the laravel framework as the home page for the web application. The posts 
 are displayed in most recent to least recent. Each post has a icon, title, 
-message and username.
+message and username. The posts display the humber of comments they have. 
 
 
 
-6. Each post should indicate the number of comments.
 7. Each post should have edit and delete buttons or links.
 8. Each post should have a view comments link.
 9. When the edit button is pressed an edit page should be displayed which presents a form to edit

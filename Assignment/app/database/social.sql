@@ -35,8 +35,11 @@ CREATE TABLE COMMENTS(
 /*
  * Insert some test data into the database
  */
-INSERT INTO POSTS VALUES(NULL, "title", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", "message", "name");
-INSERT INTO COMMENTS VALUES(NULL, 1, "message", "name");
-
+INSERT INTO POSTS VALUES(NULL, "Post 1", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", "message 4", "bob");
+INSERT INTO POSTS VALUES(NULL, "Post 2", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", " message 2", "tim");
+INSERT INTO POSTS VALUES(NULL, "Post 3", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", " message 3", "jim");
+INSERT INTO COMMENTS VALUES(NULL, 1, "comment 1", "ann");
+INSERT INTO COMMENTS VALUES(NULL, 1, "comment 2", "harry");
+INSERT INTO COMMENTS VALUES(NULL, 2, "comment 3", "max");
 
 

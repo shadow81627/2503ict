@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('post')
-<form>
+<form method="post" action="add_item_action">
   <label for ="name">Name: </label><br>
   <input type="text" name="name" placeholder="Enter your Name"> <br>
   <label for="title">Title: </label><br>
@@ -22,6 +22,7 @@
       <img class="photo" src={{{ $post->ICON }}}>
       <p>Message: {{{ $post->MESSAGE }}}</p>
       <p>submitted by: {{{ $post->NAME }}} </p>
+      <a href="{{{ url("post_comments/$post->ID") }}}">Comments {{{ $post->NUNCOMMENTS }}}</a> | <a href="{{{ url("post_edit/$post->ID") }}}">Edit</a> | <a href="{{{ url("post_delete_action/$post->ID") }}}">Delete</a>
     </div>
 @endforeach
 </ul>
