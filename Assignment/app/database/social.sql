@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS comments;
  * title, icon message and name of the poster.
  */
 CREATE TABLE posts (
-    post_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(40) NOT NULL,
     icon VARCHAR(2083),
     message VARCHAR(40) NOT NULL,
@@ -29,15 +29,15 @@ CREATE TABLE comments(
     post_ID INTEGER NOT NULL,
     comment VARCHAR(40) NOT NULL,
     comment_name VARCHAR(40) NOT NULL,
-    FOREIGN KEY(post_ID) REFERENCES posts(id)
+    FOREIGN KEY(post_ID) REFERENCES posts(ID)
 );
 
 /*
  * Insert some test data into the database
  */
-INSERT INTO posts VALUES(NULL, "Post 1", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", "message 4", "bob");
-INSERT INTO posts VALUES(NULL, "Post 2", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", " message 2", "tim");
-INSERT INTO posts VALUES(NULL, "Post 3", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", " message 3", "jim");
+INSERT INTO posts VALUES(NULL, "Post 1", "https://upload.wikimedia.org/wikipedia/en/2/2a/Griffith_University_logo.png", "message 1", "bob");
+INSERT INTO posts VALUES(NULL, "Post 2", "https://pbs.twimg.com/profile_images/378800000003051007/01e9f11c2c487fe75f5ae6e1fd3e1d33_400x400.jpeg", " message 2", "tim");
+INSERT INTO posts VALUES(NULL, "Post 3", "https://upload.wikimedia.org/wikipedia/commons/d/d9/Big_Bear_Valley,_California.jpg", " message 3", "jim");
 INSERT INTO comments VALUES(NULL, 1, "comment 1", "ann");
 INSERT INTO comments VALUES(NULL, 1, "comment 2", "harry");
 INSERT INTO comments VALUES(NULL, 2, "comment 3", "max");

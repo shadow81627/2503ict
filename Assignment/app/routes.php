@@ -13,32 +13,32 @@
 
 Route::get('/', function()
 {
-	$posts = get_posts();
-	return View::make('social.home')->withPosts($posts);
+  return Redirect::to(url("home"));
 });
 
-Route::get('page2', function()
+Route::get('home', function()
 {
 	$posts = get_posts();
-	return View::make('social.page2')->withPosts($posts);
+	return View::make('social.home')->withPosts($posts);
 });
 
 Route::get('posts_comments/{id}', function($id)
 {
     $post = get_post($id);
-	return View::make('social.posts_comments')->withPost($post);
+    $comments = get_comments($id);
+	return View::make('social.posts_comments')->withPost($post)->withComments($comments);
 });
 /*
  * Adds the input of text fields to the database as a new post
  */
-Route::post('add_item_action', function()
+Route::post('add_post_action', function()
 {
   $title = Input::get('title');
   $name = Input::get('name');
   $message = Input::get('message');
   
   if($title != NULL && $name != NULL && $message != NULL){
-     $id = add_item($title, $name, $message);
+     $id = add_post($title, $name, $message);
   }else {
      die("Ensure all fields are filled");
   }
@@ -46,7 +46,30 @@ Route::post('add_item_action', function()
   // If successfully created then display newly created item
   if ($id) 
   {
-    return Redirect::to(url("post_comments/$id"));
+    return Redirect::to(url("posts_comments/$id"));
+  } 
+  else
+  {
+    die("Error adding item");
+  }
+});
+
+Route::post('add_comment_action', function()
+{
+  $post_id = Input::get('id');
+  $name = Input::get('name');
+  $comment = Input::get('comment');
+  
+  if($post_id != NULL && $name != NULL && $comment != NULL){
+     add_comment($post_id, $name, $comment);
+  }else {
+     die("Ensure all fields are filled");
+  }
+
+  // If successfully created then display newly created item
+  if ($post_id) 
+  {
+    return Redirect::to(url("posts_comments/$post_id"));
   } 
   else
   {
@@ -56,13 +79,37 @@ Route::post('add_item_action', function()
 
 Route::get('posts_edit/{id}', function($id)
 {
-	return View::make('social.posts_edit')->withPosts($posts);
+    $post = get_post($id);
+	return View::make('social.posts_edit')->withPost($post);
 });
 
-Route::get('delete_item_action/{id}', function($id)
+Route::post('edit_post_action', function()
+{
+    $title = Input::get('title');
+    $name = Input::get('name');
+    $message = Input::get('message');
+    $id = Input::get('id');
+
+     if($title != NULL && $name != NULL && $message != NULL){
+        $id = update_item($id, $title, $name, $message);
+    }else {
+        die("Ensure all fields are filled");
+    }
+  
+    if ($id) 
+    {
+        return Redirect::to(url("posts_comments/$id"));
+    } 
+     else
+    {
+        die("Error updating item");
+    }
+});
+
+Route::get('posts_delete_action/{id}', function($id)
 {
   delete_post($id);
-  return Redirect::to(url("page2"));
+  return Redirect::to(url("home"));
 });
 
 /*
@@ -70,10 +117,10 @@ Route::get('delete_item_action/{id}', function($id)
  */
 function get_posts()
 {
-    $sql = "SELECT COUNT(comments.comment_ID) AS numComments, * FROM posts LEFT JOIN comments ON posts.post_ID = comments.post_ID
-    group by posts.post_ID order by posts.post_ID desc";
+    $sql = "SELECT COUNT(comments.comment_ID) AS numComments, * FROM posts LEFT JOIN comments ON posts.ID = comments.post_ID
+    group by posts.ID order by posts.ID desc";
     $posts = DB::select($sql);
-    print_r($posts);
+    //print_r($posts);
     return $posts;
 }
 
@@ -82,7 +129,7 @@ function get_posts()
  */
 function get_post($id)
 {
-	$sql = "SELECT * FROM posts WHERE post_ID = ?";
+	$sql = "SELECT * FROM posts WHERE ID = ?";
 	$posts = DB::select($sql, array($id));
 
 	// If we get more than one item or no items display an error
@@ -95,10 +142,22 @@ function get_post($id)
   $post = $posts[0];
 	return $post;
 }
-
-function add_item($title, $name, $message) 
+/*
+ * gets all the comments for a post
+ */
+function get_comments($id)
 {
-  $sql = "insert into POSTS(TITLE, NAME, MESSAGE) values (?, ?, ?)";
+	$sql = "SELECT * FROM comments WHERE post_ID = ?";
+	$comments = DB::select($sql, array($id));
+	//print_r($comments);
+	return $comments;
+}
+/*
+ * adds a new post with the given details
+ */
+function add_post($title, $name, $message) 
+{
+  $sql = "insert into posts(title, post_name, message) values (?, ?, ?)";
 
   DB::insert($sql, array($title, $name, $message));
 
@@ -107,16 +166,32 @@ function add_item($title, $name, $message)
   return $id;
 }
 
-function update_item($id, $summary, $details) 
+/*
+ * adds a new comment with the given details
+ */
+function add_comment($post_id, $name, $comment) 
 {
-  $sql = "update item set summary = ?, details = ? where id = ?";
-  DB::update($sql, array($summary, $details, $id));
+  $sql = "insert into comments(post_ID, comment_name, comment) values (?, ?, ?)";
+
+  DB::insert($sql, array($post_id, $name, $comment));
+}
+
+/*
+ * updates a post with the given details
+ */
+function update_item($id, $title, $name, $message) 
+{
+  $sql = "update posts set title = ?, post_name = ?, message = ? where id = ?";
+  DB::update($sql, array($title, $name, $message, $id));
   return $id;
 }
 
+/*
+ * Deletes the item of given ID
+ */
 function delete_post($id) 
 {
-  $sql = "delete from POSTS where ID = ?";
+  $sql = "delete from posts where ID = ?";
   DB::delete($sql, array($id));
 } 
 

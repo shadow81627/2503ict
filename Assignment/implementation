@@ -1,21 +1,19 @@
-I used lab4 task4 to create the navigation bar, create post and display post 
-with the laravel framework as the home page for the web application. The posts 
-are displayed in most recent to least recent. Each post has a icon, title, 
-message and username. The posts display the humber of comments they have. 
+I used lab4 task4 to create the navigation bar which has a home button in the 
+top left, create post and display post with the laravel framework as the home 
+page for the web application. 
+
+The posts are displayed in most recent to least recent. Each post has a icon, 
+title, message and username. The posts display the number of comments they have. 
+
+The posts have edit, delete and view comments links. The edit button links to 
+the edit page which has a form for editing a contact and has a cancel button 
+which takes you back to the home page. When the update button is pressed the 
+page redirects to the post detials page.
+
+The view comments button takes you to a new page and displays all of the 
+comments for that post and allows you take make new comments.
 
 
-
-7. Each post should have edit and delete buttons or links.
-8. Each post should have a view comments link.
-9. When the edit button is pressed an edit page should be displayed which presents a form to edit
-the contents of the post. A cancel button on this page simply redirects back to the home page
-without any changes. A save button, updates the post and redirects to the view comments page.
-10. When the view comments link is pressed, a new page (the view comments page) is displayed
-showing the post as well as all of the comments.
 11. The view comments page should contain a form to add a new comment to the post.
-12. Comments have a message and a user, but no title.
 13. Comments have a delete button but no edit button. Deleting a comment should redirect to the
 view comments page.
-14. This assignment must be implemented using Laravel and the DB class.
-Good coding practice is expected. This includes:
-- Naming: using consistent, readable, and descriptive names for files
