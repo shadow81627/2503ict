@@ -50,7 +50,7 @@ class ProductController extends \BaseController {
 	public function show($id)
 	{
 		$product = Product::find($id);
-		return View::make('products.show', compact('product'));
+		return View::make('product.show', compact('product'));
 	}
 
 

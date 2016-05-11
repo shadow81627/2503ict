@@ -1,6 +1,7 @@
 @extends('layout')
-
-@section('content')
+@section('title')
+@stop
+@section('product')
 
 <h1>Product</h1>
 <p>Name: {{{ $product->name }}}</p>

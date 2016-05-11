@@ -1,3 +1,7 @@
+@extends('layout')
+@section('title')
+@stop
+@section('product')
 {{ Form::open(array('action' => 'ProductController@store')) }}
 
 {{ Form::label('name', 'Product Name: ') }}
@@ -9,3 +13,4 @@
 {{ Form::submit('Create') }}
 
 {{ Form::close() }}
+@stop

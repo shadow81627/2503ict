@@ -4,9 +4,8 @@ Products
 @stop
 @section('product')
 <ul>
- @foreach ($products as $product)
- <li>Name: {{{ $product->name }}}</li>
- <li>Price: {{{ $product->price }}}</li>
+    @foreach($products as $product)
+  <li> {{ link_to_route('product.show', $product->name, array($product->id)) }}
  @endforeach
 </ul>
 @stop
