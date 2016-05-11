@@ -33,11 +33,17 @@ class ProductController extends \BaseController {
 	public function store()
 	{
 		$input = Input::all();
-		$product = new Product();
-		$product->name = $input['name'];
-		$product->price = $input['price'];
-		$product->save();
-		return Redirect::route('product.show', $product->id);
+		$v = Validator::make($input, Product::$rules);
+		if ($v->passes()){
+			$product = new Product();
+			$product->name = $input['name'];
+			$product->price = $input['price'];
+			$product->save();
+			return Redirect::route('product.show', $product->id);
+		}else {
+			 //show validation errors
+			 return Redirect::action('ProductController@create')->withErrors($v);
+		}
 	}
 
 
