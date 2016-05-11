@@ -62,7 +62,8 @@ class ProductController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		
+		$product = Product::find($id);
+		return View::make('product.edit', compact('product'));
 	}
 
 
