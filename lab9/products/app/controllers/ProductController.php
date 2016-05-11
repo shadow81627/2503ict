@@ -81,12 +81,18 @@ class ProductController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$v = Validator::make($input, Product::$rules);
+		if ($v->passes()){
 		   $product = Product::find($id);
 		   $input = Input::all();
 		   $product->name = $input['name'];
 		   $product->price = $input['price'];
 		   $product->save();
 		   return Redirect::route('product.show', $product->id);
+		}else {
+			 //show validation errors
+			 return Redirect::action('ProductController@create')->withErrors($v);
+		}
 	}
 
 
