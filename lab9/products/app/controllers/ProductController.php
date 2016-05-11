@@ -75,7 +75,12 @@ class ProductController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		   $product = Product::find($id);
+		   $input = Input::all();
+		   $product->name = $input['name'];
+		   $product->price = $input['price'];
+		   $product->save();
+		   return Redirect::route('product.show', $product->id);
 	}
 
 
