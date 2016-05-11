@@ -32,7 +32,12 @@ class ProductController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::all();
+		$product = new Product();
+		$product->name = $input['name'];
+		$product->price = $input['price'];
+		$product->save();
+		return Redirect::route('product.show', $product->id);
 	}
 
 
@@ -44,7 +49,8 @@ class ProductController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$product = Product::find($id);
+		return View::make('products.show', compact('product'));
 	}
 
 
@@ -56,8 +62,7 @@ class ProductController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$product = Product::find($id);
-		return View::make('products.show', compact('product'));
+		
 	}
 
 
