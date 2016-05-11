@@ -1,4 +1,9 @@
-Form::model($product, array('method' => 'PUT', 'route' => array('product.update', $product->id)));
+@extends('layout')
+@section('title')
+Edit
+@stop
+@section('product')
+{{Form::model($product, array('method' => 'PUT', 'route' => array('product.update', $product->id)));
 
 {{ Form::label('name', 'Product Name: ') }}
 {{ Form::text('name') }}
@@ -9,3 +14,4 @@ Form::model($product, array('method' => 'PUT', 'route' => array('product.update'
 {{ Form::submit('Create') }}
 
 {{ Form::close() }}
+@stop

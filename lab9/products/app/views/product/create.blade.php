@@ -1,5 +1,6 @@
 @extends('layout')
 @section('title')
+Create
 @stop
 @section('product')
 {{ Form::open(array('action' => 'ProductController@store')) }}
