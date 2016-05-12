@@ -20,6 +20,14 @@ class CreateProductsTable extends Migration {
 		      $table->float('price');
 		      $table->timestamps();
 		  });
+		  
+		  Schema::create('users', function($table) {
+		  $table->increments('id');
+		  $table->string('username')->unique();
+		  $table->string('password')->index();
+		  $table->string('remember_token')->nullable();
+		  $table->timestamps();
+		  });
 	}
 
 	/**
