@@ -10,4 +10,5 @@
 {{ Form::open(array('method' => 'DELETE', 'route' => array('product.destroy', $product->id))) }}
      {{ Form::submit('Delete', array('class' => 'btn btn-danger')) }}
 {{ Form::close() }}
+<p>{{ link_to_route('product.index', 'List') }} </p>
 @stop
