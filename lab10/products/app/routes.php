@@ -17,3 +17,7 @@ Route::get('/', function()
 });
 
 Route::resource('product', 'ProductController'); 
+
+Route::post('user/login', array('as' => 'user.login', 'uses' => 'UserController@login')); 
+Route::get('user/logout', array('as' => 'user.logout', 'uses' => 'UserController@logout')); 
+Route::resource('user', 'UserController'); 
