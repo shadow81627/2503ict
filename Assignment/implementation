@@ -17,3 +17,13 @@ comments for that post and allows you take make new comments.
 11. The view comments page should contain a form to add a new comment to the post.
 13. Comments have a delete button but no edit button. Deleting a comment should redirect to the
 view comments page.
+
+
+John has 10 posts.
+
+Bob has 3 posts.
+
+Added seeders for Posts, comments and users. 
+Added models for Posts and comments.
+Added migrations for Posts, comments and users.
+Added controllers for Posts, comments and users.
