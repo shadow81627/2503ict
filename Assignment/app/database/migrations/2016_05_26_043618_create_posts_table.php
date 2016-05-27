@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration {
 			$table->increments('id');
 			$table->string('title');
 			$table->string('icon')->nullable();
-			$table->string('message')->nullable();
+			$table->string('message');
 			$tabe->string('post_name');
 			$table->string('remember_token')->nullable();
 			$table->timestamps();
