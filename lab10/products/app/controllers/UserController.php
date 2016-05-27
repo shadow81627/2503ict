@@ -35,15 +35,16 @@ class UserController extends \BaseController {
 		 $input = Input::all();
 		$v = Validator::make($input, User::$rules);
 		if ($v->passes()){
-		 $password = $input['password'];
-		 $encrypted = Hash::make($password);
+		 //$password = $input['password'];
+		 $encrypted = Hash::make($input['password']);
 		 $user = new User;
 		 $user->username = $input['username'];
 		 $user->password = $encrypted;
+		 $user->remember_token = 'default';
 		 $user->save();
-		 return Redirect::route(‘product.index’);
+		 return Redirect::route('product.index');
 		}else{
-			
+			return Redirect::action('UserController@create')->withErrors($v);
 		}
 	}
 
