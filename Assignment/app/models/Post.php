@@ -4,5 +4,6 @@ class Post extends Eloquent {
         'title' => 'required',
         'message' => 'required',
         'post_name' => 'required',
+        'privacy' => 'required'
     );
 }

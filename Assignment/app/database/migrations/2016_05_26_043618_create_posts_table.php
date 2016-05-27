@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration {
 			$table->string('icon')->nullable();
 			$table->string('message');
 			$tabe->string('post_name');
+			$table->string('privacy');
 			$table->string('remember_token')->nullable();
 			$table->timestamps();
 		});
