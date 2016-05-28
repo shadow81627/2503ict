@@ -8,6 +8,13 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
 	use UserTrait, RemindableTrait;
+	
+	public static $rules = array(
+        'password' => 'required',
+        'username' => 'required|unique:users',
+        'birthdate' => 'required',
+        'fullname' => 'required',
+    );
 
 	/**
 	 * The database table used by the model.
