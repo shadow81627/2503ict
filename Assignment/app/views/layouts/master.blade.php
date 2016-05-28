@@ -68,6 +68,12 @@
               <li><a href="{{{ url('implemention') }}}">Implemented</a></li>
               <li><a href="{{{ url('erd') }}}">ERD</a></li>
             </ul>
+             {{ Form::open(array('route' => 'user.store')) }}
+             {{ Form::label('password', 'Password:') }}
+            {{ Form::password('password' ) }}
+            {{ $errors->first('password') }}
+            {{ Form::submit('Create') }}
+            {{ Form::close() }}
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>

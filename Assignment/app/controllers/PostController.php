@@ -43,7 +43,18 @@ class PostController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		$sql = "SELECT * FROM posts WHERE id = ?";
+		$posts = DB::select($sql, array($id));
+	
+		// If we get more than one item or no items display an error
+		if (count($posts) != 1) 
+		{
+	    die("Invalid query or result: $query\n");
+	  }
+	
+		// Extract the first item (which should be the only item)
+	  $post = $posts[0];
+		return $post;
 	}
 
 
