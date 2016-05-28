@@ -42,9 +42,10 @@ Route::post('add_post_action', function()
   $title = Input::get('title');
   $name = Input::get('name');
   $message = Input::get('message');
+  $privacy = Input::get('privacy');
   
   if($title != NULL && $name != NULL && $message != NULL){
-     $id = add_post($title, $name, $message);
+     $id = add_post($title, $name, $message, $privacy);
   }else {
      die("Ensure all fields are filled");
   }
@@ -167,10 +168,21 @@ function get_comments($id)
 	//print_r($comments);
 	return $comments;
 }
+
+/**
+ * gets all the comments for a post
+ */
+function get_users(){
+	$sql = "SELECT * FROM users";
+	$users = DB::select($sql);
+	//print_r($users);
+	return $users;
+}
+
 /*
  * adds a new post with the given details
  */
-function add_post($title, $name, $message) 
+function add_post($title, $name, $message, $privacy) 
 {
   $sql = "insert into posts(title, post_name, message) values (?, ?, ?)";
 
@@ -233,3 +245,10 @@ function delete_comment($id)
      // print_r($post->post_ID);
 	return $post;
 } 
+
+Route::resource('post', 'PostController'); 
+Route::resource('comment', 'CommentController'); 
+
+Route::post('user/login', array('as' => 'user.login', 'uses' => 'UserController@login')); 
+Route::get('user/logout', array('as' => 'user.logout', 'uses' => 'UserController@logout')); 
+Route::resource('user', 'UserController');

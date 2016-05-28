@@ -35,10 +35,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * Declears the many to many relationship between a user and user.
 	 * A user has many Users as friends.
 	 */
-    /*function users() {
+    function friends() {
 		//return $this->belongsToMany('User');
 		return $this->belongsToMany('User', 'user_friends', 'user_id', 'friend_id');
-	}*/
+	}
 	
 	/**
 	 * Declears the many to many relationship between a user and user.
@@ -52,7 +52,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * Declears the many to many relationship between a user and user.
 	 * A user has many Users as friends.
 	 */
-	public function friends(){
+	/*public function friends(){
 	 	return $this->belongsToMany('Friend');
-	}
+	}*/
 }

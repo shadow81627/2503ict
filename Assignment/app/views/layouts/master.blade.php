@@ -43,6 +43,26 @@
             </button>
             <a class="navbar-brand" href="{{{ url("home") }}}">Social Network</a>
           </div>
+        {{ link_to_route('user.create', 'Create an Account') }} <br>
+
+        @if (Auth::check()) 
+        {{ link_to_route('user.logout', 'Logout') }}
+        {{ Auth::user()->username }} <br>
+        @else
+        {{ Form::open(array('route' => 'user.login')) }}
+        {{ Form::label('username', 'Username:') }}
+        {{ Form::text('username') }}
+        {{ $errors->first('username') }}
+        
+        {{ Form::label('password', 'Password:') }}
+        {{ Form::password('password' ) }}
+        {{ $errors->first('password') }}
+        
+        {{ Form::submit('Login') }}
+        {{ Form::close() }}
+        
+        {{ Session::pull('login_error') }} <br>
+        @endif 
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="{{{ url('implemention') }}}">Implemented</a></li>

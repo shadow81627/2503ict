@@ -20,7 +20,7 @@ class UserController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('user.create');
 	}
 
 
@@ -29,11 +29,24 @@ class UserController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function store()
-	{
-		//
+	function store(){
+		// if (!Auth::check()) return Redirect::route(‘product.index’);
+		 
+		 $input = Input::all();
+		$v = Validator::make($input, User::$rules);
+		if ($v->passes()){
+		 //$password = $input['password'];
+		 $encrypted = Hash::make($input['password']);
+		 $user = new User;
+		 $user->username = $input['username'];
+		 $user->password = $encrypted;
+		 $user->remember_token = 'default';
+		 $user->save();
+		 return Redirect::route('product.index');
+		}else{
+			return Redirect::action('UserController@create')->withErrors($v);
+		}
 	}
-
 
 	/**
 	 * Display the specified resource.
@@ -80,6 +93,39 @@ class UserController extends \BaseController {
 	public function destroy($id)
 	{
 		//
+	}
+
+	/**
+	 * log a user in
+	 *
+	 * @return Response
+	 */
+	public function login()
+	{
+		$userdata = array(
+			'username' =>Input::get('username'),
+			'password' =>Input::get('password')
+			);
+		
+		if ( Auth::attempt($userdata) ) {
+			Session::put('login_error', '');
+			return Redirect::to(URL::previous());
+		}else{
+			Session::put('login_error', 'Login failed');
+			return Redirect::to(URL::previous())->withInput();
+		}
+		
+	}
+
+	/**
+	 * Log a user out
+	 *
+	 * @return Response
+	 */
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::action('ProductController@index');
 	}
 
 
