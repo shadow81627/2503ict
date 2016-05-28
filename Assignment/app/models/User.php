@@ -22,5 +22,37 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var array
 	 */
 	protected $hidden = array('password', 'remember_token');
-
+	
+	/**
+	 * Declears the one to many relationship between a user and posts.
+	 * A user has many Posts.
+	 */
+	function post() {
+        return $this->hasMany('Post');
+    }
+    
+    /**
+	 * Declears the many to many relationship between a user and user.
+	 * A user has many Users as friends.
+	 */
+    /*function users() {
+		//return $this->belongsToMany('User');
+		return $this->belongsToMany('User', 'user_friends', 'user_id', 'friend_id');
+	}*/
+	
+	/**
+	 * Declears the many to many relationship between a user and user.
+	 * A user has many Users as friends.
+	 */
+	/*public function friends(){
+	 	return $this->belongsToMany('Friend', 'user_friend','user_id', 'friend_id');
+	}*/
+	
+	/**
+	 * Declears the many to many relationship between a user and user.
+	 * A user has many Users as friends.
+	 */
+	public function friends(){
+	 	return $this->belongsToMany('Friend');
+	}
 }

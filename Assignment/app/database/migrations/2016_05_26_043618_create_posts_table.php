@@ -17,10 +17,11 @@ class CreatePostsTable extends Migration {
 			$table->string('title');
 			$table->string('icon')->nullable();
 			$table->string('message');
-			$tabe->string('post_name');
+			$table->string('user_id')->unsigned();
 			$table->string('privacy');
-			$table->string('remember_token')->nullable();
 			$table->timestamps();
+			
+			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 

@@ -11,7 +11,7 @@ DROP TABLE IF EXISTS comments;
  * Creates the posts table which stores all of the data for a post such as 
  * title, icon message and name of the poster.
  */
-CREATE TABLE posts (
+CREATE TABLE posts(
     ID INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(40) NOT NULL,
     icon VARCHAR(2083),

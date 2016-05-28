@@ -124,6 +124,9 @@ Route::get('comment_delete_action/{id}', function($id)
   return Redirect::to(url("posts_comments/$post->post_ID"));
 });
 
+
+Route::resource('post', 'PostController'); 
+
 /*
  * Gets all of the columns and counts the number of comments for each post from the Posts table.
  */
